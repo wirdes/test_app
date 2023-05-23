@@ -4,8 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:ai_app/main.dart';
 
 void main() {
-  // getPlateNumber test
-
   test('Test Random index', () {
     final randomNumber = Random().nextInt(cities.values.length);
     final randomCity = cities.values.elementAt(randomNumber);
@@ -21,7 +19,19 @@ void main() {
     expect(plateNumber2, "34");
   });
 
+  test("Test for Invalid index", () {
+    final plateNumber = getPlateNumber("İSTANBUL");
+    expect(plateNumber, "35");
+  });
+
   // Write Widget test for MyHomePage
+
+  testWidgets('Test MyHomePage', (WidgetTester tester) async {
+    await tester.pumpWidget(const MyApp());
+    expect(find.text('AI App'), findsOneWidget);
+  });
+
+  // can you test MYHomePage
 
   testWidgets('Test MyHomePage', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp());
